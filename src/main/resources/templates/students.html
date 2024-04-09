@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Student</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/studentenroll.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<section class="sub-header">
+	<nav>
+		  <a href="index"><img src="images/autlog2.png"></a>
+		  <div class="nav-links" id="navLinks">
+		  	<i class="fa fa-times" onclick="hideMenu()"></i>
+		  	<ul>
+		  		<li><a href="teacherdashboard" style="color: #fff;">BACK TO PORTAL</a></li>
+		  	</ul>
+		  </div>
+		  <i class="fa fa-bars" onclick="showMenu()"></i>
+	</nav>
+<h1>Add Student Details</h1>
+</section>
+	<div class="container">
+		<form action="students" method="post" th:action="@{students}" th:object="${student}">
+			<div class="mb-5">
+				<div class="row">
+            		<div class="form-group col-md-6 mb-3">
+                		<input type="text" id="sName" name="sName" th:field="*{sName}" class="form-control" placeholder="Name"/>
+            		</div>
+            
+            		<div class="form-group col-md-6 mb-3">
+                		<input type="text" id="sPlace" name="sPlace" th:field="*{sPlace}" class="form-control" placeholder="Place"/>
+            		</div>
+            		<div class="form-group col-md-6 mb-3">
+                		<input type="number" id="sAge" name="sAge" th:field="*{sAge}" class="form-control" placeholder="Student Age"/>
+            		</div>
+					<div class="form-group col-md-6 mb-3">
+						<select id="sCourse" name="sCourse" class="form-control"  th:field="*{sCourse}">
+	  						<option value="">Choose a Course</option>
+	    					<option value="Business Analysis">Business Analysis</option>
+	    					<option value="Big Data Analytics">Big Data Analytics</option>
+	    					<option value="Deep Learning">Deep Learning</option>
+	    					<option value="Computer Engineering">Computer Engineering</option>
+	    					<option value="Automation">Automation</option>
+	    					<option value="Embedded Systems">Embedded Systems</option>
+	    					<option value="Litreature">Literature</option>
+	  					</select>
+					</div>
+					<div class="form-group col-md-6 mb-3">
+					    <input type="number" id="tId" name="tId" th:field="*{tId}" class="form-control" placeholder="Teacher ID (Please Refer To The Below Table)"/>
+					</div>
+					<div class="col-lg-12 mt-5">
+						<button type="submit" class="btn btn-success" id="Submit">ADD STUDENT</button>
+					</div>
+				</div>
+			</div>
+		</form>
+		<!--  Displaying Campus details in the table below for reference for Teacher ID-->
+		<h1>Available Teacher Details</h1>
+	<div class="container">
+		<div class="row mt-5 table-responsive">
+			<div class="col-12">
+				<table class="table table-bordered" id="crudTable">
+					<thead>
+						<tr>
+							<th>Teacher ID</th>
+							<th>Teacher Name</th>
+							<th>Teacher Faculty</th>
+							<th>Teacher Place</th>
+							<th>Teacher Age</th>
+						</tr>
+					</thead>
+					<tbody>
+					    <tr th:each="teacher : ${teachers}">
+					        <td th:text="${teacher.tId}">Sample Student ID</td>
+					        <td th:text="${teacher.tName}">Sample Name</td>
+					        <td th:text="${teacher.tFaculty}">Sample Place</td>
+					        <td th:text="${teacher.tPlace}">Sample Course</td>
+					        <td th:text="${teacher.tAge}">Sample Age</td>
+					    </tr>
+					</tbody>
+				</table>
+			</div>	
+		</div>
+	</div>	
+	</div>
+<script >
+		var navLinks=document.getElementById("navLinks");
+
+		function showMenu(){
+			navLinks.style.right = "0";
+		}
+		function hideMenu(){
+			navLinks.style.right = "-200px";
+		}
+	</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.querySelector('form');
+
+    form.onsubmit = function(event) {
+        // Get the values from the input fields
+        var sName = document.getElementById('sName').value.trim();
+        var sPlace = document.getElementById('sPlace').value.trim();
+        var sCourse = document.getElementById('sCourse').value.trim();
+        var sAge = document.getElementById('sAge').value.trim();
+        var tId = document.getElementById('tId').value.trim();
+
+        // Validate each field to ensure it is filled out
+        if (sAge === "") {
+            alert("Age is required");
+            return false;
+        } else if (isNaN(sAge) || parseInt(sAge) <= 0 || !Number.isInteger(parseInt(sAge)) || parseInt(sAge) > 60) {
+            alert("Please enter a valid age (positive integer up to 60 years old).");
+            return false;
+        }
+        if (sName === ""){
+            alert("Student Name is required");
+            return false;
+        } else if (!/^[a-zA-Z\s]*$/.test(sName)) {
+            alert("Please enter a valid Student Name with no numeric characters.");
+            return false;
+        }
+        if (sPlace === ""){
+            alert("Student Place is required");
+            return false;
+        }
+        if (sCourse === ""){
+            alert("Student Course is required");
+            return false;
+        }
+        if (tId === ""){
+            alert("Teacher ID is required");
+            return false;
+        } else if (isNaN(tId) || parseInt(tId) <= 0 || !Number.isInteger(parseInt(tId))) {
+            alert("Please enter a valid positive integer for Teacher ID.");
+            return false;
+        }
+
+        // Return true if all validations pass
+        return true;
+    };
+});
+</script>
+
+</script>
+<!-- Script tag for error message alert box when data is added -->
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check for flash messages
+        var message = /*[[${message}]]*/ null;
+        var errorMessage = /*[[${errorMessage}]]*/ null;
+
+        // Display the message if it exists
+        if (message !== null && message !== '') {
+            alert(message);
+        }
+
+        // Display the error message if it exists
+        if (errorMessage !== null && errorMessage !== '') {
+            alert(errorMessage);
+        }
+    });
+</script>
+	
+</body>
+</html>
