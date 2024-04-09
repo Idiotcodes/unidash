@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Austin University</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<section class="sub-header">
+	<nav>
+		  <a href="index"><img src="images/autlog2.png"></a>
+		  <div class="nav-links" id="navLinks">
+		  	<i class="fa fa-times" onclick="hideMenu()"></i>
+		  	<ul>
+		  		<li><a href="index" style="color: #fff;">HOME</a></li>
+		  		<li><a href="about" style="color: #fff;">ABOUT</a></li>
+		  		<li><a href="course" style="color: #fff;">COURSE</a></li>
+		  		<li><a href="blog" style="color: #fff;">BLOG</a></li>
+		  		<li><a href="contact" style="color: #fff;">CONTACT</a></li>
+		  		<li><a href="login" style="color: #fff;">PORTAL</a></li>
+		  	</ul>
+		  </div>
+		  <i class="fa fa-bars" onclick="showMenu()"></i>
+	</nav>
+<h1>Contact Us</h1>
+</section>
+<!-- -----------------contact us content----------------- -->
+<section class="location">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13782.99242915015!2d-97.74348244999999!3d30.2727575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b50a22f2576f%3A0xfded6e1aca5cba6!2sDowntown%20Austin%2C%20Austin%2C%20TX%2C%20USA!5e0!3m2!1sen!2sie!4v1707347884136!5m2!1sen!2sie" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+	
+</section>
+<section class="contact-us">
+	<div class="row">
+		<div class="contact-col">
+			<div>
+				<i class="fa fa-home"></i>
+				<span>
+					<h5>Richmond Road, Near Austin Conventional Center</h5>
+					<p>Austin 09</p>
+				</span>
+			</div>
+			<div>
+				<i class="fa fa-phone"></i>
+				<span>
+					<h5>+353 089486325</h5>
+					<p>Monday to Saturday, 10AM to 6PM</p>
+				</span>
+			</div>
+			<div>
+				<i class="fa fa-envelope-o"></i>
+				<span>
+					<h5>info@aut.ie</h5>
+					<p>Email us your query</p>
+				</span>
+			</div>
+		</div>
+		<div class="contact-col">
+			<form action="">
+				<input type="text" placeholder="Enter your name" required>
+				<input type="email" placeholder="Enter Email Address" required>
+				<input type="text" placeholder="Enter your subject" required>
+				<textarea rows="8" placeholder="Message" required></textarea>
+				<button type="submit" class="hero-btn blue-btn">Send Message</button>
+			</form>
+		</div>
+	</div>
+</section>
+
+
+<!-- --------------Footer--------------- -->
+<section class="footer">
+	<h4>Copyright</h4>
+	<p>© 2020 Austin University.All Rights reserved<br>COPYRIGHT|PRIVACY|SITE MAP|STUDENT FEEDBACK:COMPLAINTS,SUGGESTIONS AND COMPLIMENTS</p>
+	<div class="icons">
+		<i class="fa fa-facebook"></i>
+		<i class="fa fa-twitter"></i>
+		<i class="fa fa-instagram"></i>
+		<i class="fa fa-linkedin"></i>
+	</div>
+</section>
+<!-- -----------Javascript--------- -->
+<script >
+	var navLinks=document.getElementById("navLinks");
+
+	function showMenu(){
+		navLinks.style.right = "0";
+	}
+	function hideMenu(){
+		navLinks.style.right = "-200px";
+	}
+</script>
+</body>
+</html>

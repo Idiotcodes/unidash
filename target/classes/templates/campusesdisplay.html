@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Campus</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/studentenroll.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<section class="sub-header">
+	<nav>
+		  <a href="index"><img src="images/autlog2.png"></a>
+		  <div class="nav-links" id="navLinks">
+		  	<i class="fa fa-times" onclick="hideMenu()"></i>
+		  	<ul>
+
+		  		<li><a href="#" onclick="history.back();" style="color: #fff;">BACK TO PORTAL</a></li>
+		  	</ul>
+		  </div>
+		  <i class="fa fa-bars" onclick="showMenu()"></i>
+	</nav>
+<h1>View Campus Details</h1>
+</section>
+	<div class="container">
+		<div class="row mt-5 table-responsive">
+			<div class="col-12">
+				<table class="table table-bordered" id="crudTable">
+					<thead>
+						<tr>
+							<th>Campus ID</th>
+							<th>Campus Name</th>
+							<th>Campus Faculty</th>
+							<th>Campus Place</th>
+							<th>Campus Capacity</th>
+							<th>Campus Lab Facilities</th>
+						</tr>
+					</thead>
+					<tbody><!-- Displaying campus data in the table -->
+					    <tr th:each="campus : ${campuses}">
+					        <td th:text="${campus.cId}">Sample ID</td>
+					        <td th:text="${campus.cName}">Sample Name</td>
+					        <td th:text="${campus.cFaculty}">Sample Faculty</td>
+					        <td th:text="${campus.cPlace}">Sample Place</td>
+					        <td th:text="${campus.cCapacity}">Sample Capacity</td>
+					        <td th:text="${campus.cLabFacilities}">Sample Lab</td>
+					    </tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		</div>
+<script >
+		var navLinks=document.getElementById("navLinks");
+
+		function showMenu(){
+			navLinks.style.right = "0";
+		}
+		function hideMenu(){
+			navLinks.style.right = "-200px";
+		}
+	</script>
+
+</body>
+</html>

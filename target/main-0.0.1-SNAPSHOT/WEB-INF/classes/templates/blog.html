@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Austin University</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<section class="sub-header">
+	<nav>
+		  <a href="index"><img src="images/autlog2.png"></a>
+		  <div class="nav-links" id="navLinks">
+		  	<i class="fa fa-times" onclick="hideMenu()"></i>
+		  	<ul>
+		  		<li><a href="index" style="color: #fff;">HOME</a></li>
+		  		<li><a href="about" style="color: #fff;">ABOUT</a></li>
+		  		<li><a href="course" style="color: #fff;">COURSE</a></li>
+		  		<li><a href="blog" style="color: #fff;">BLOG</a></li>
+		  		<li><a href="contact" style="color: #fff;">CONTACT</a></li>
+		  		<li><a href="login" style="color: #fff;">PORTAL</a></li>
+		  	</ul>
+		  </div>
+		  <i class="fa fa-bars" onclick="showMenu()"></i>
+	</nav>
+<h1>Our Certificate & Online Programs</h1>
+</section>
+<!-- -----------------Blog Page content----------------- -->
+
+<section class="blog-content">
+	<div class="row">
+		<div class="blog-left">
+			<img src="images/Certificate.png">
+			<h2>Our Certificate & Online Programs</h2>
+			<p>At Austin University, we offer a diverse array of Certificate and Diploma programs tailored to suit individuals from diverse backgrounds and educational levels. Regardless of your starting point, our pathways allow for seamless progression into various academic disciplines. Whether you're aiming to enhance your career prospects with a university degree or simply seeking to broaden your understanding of the world, we have the perfect course to spark your curiosity!</p>
+			<br>
+			<p>At AUT, we prioritize the individual student experience. In our postgraduate studies, you'll benefit from intimate class sizes and personalized mentorship from experienced senior lecturers and renowned global researchers. Our Taught Masters Programs aim to cultivate and enrich students' expertise and competencies in their chosen subject area at the postgraduate level. These programs provide students with the chance to specialize in an area of interest that closely aligns with their undergraduate background or current professional trajectory.</p>
+			<br>
+			<p>To facilitate career advancement and exploration of new professional pathways, we provide a diverse selection of taught master's qualifications, such as Master of Arts, Master of Science, Master of Social Science, LLM, Master of Education, and Professional Master of Education. Additionally, at AUT University, we present Conversion Courses, allowing individuals to transition into a different field of study through specialized conversion Master's programs.</p>
+			<br>
+			<p>In 2024, AUT University provides level 8 Bachelor degree holders (or equivalent) with accessible pathways to delve into new fields of expertise through our popular conversion programs. These initiatives require no prior experience, offering a seamless transition into a new domain. Renowned for our excellent teaching, delivered by esteemed international researchers deeply engaged with their students, AUT fosters a vibrant campus community characterized by a student-centered and collaborative spirit. These attributes collectively shape a distinctive AUT student experience. We prioritize equipping graduates with essential skills in critical thinking and effective communication, recognizing these as paramount upon completing their university journey.</p>
+			<div class="comment-box">
+				<h3>Leave a Comment</h3>
+				<form class="comment-form">
+					<input type="text" placeholder="Enter Name">
+					<input type="email" placeholder="Enter E-mail">
+					<textarea rows="5" placeholder="Your Comment"></textarea>
+					<button type="submit" class="hero-btn blue-btn">POST COMMENT</button>
+				</form>
+			</div>
+
+
+
+
+
+		</div>
+		<div class="blog-right">
+			<h3>Program Categories</h3>
+			<div>
+				<span>Business Analysis</span>
+				<span>21</span>
+			</div>
+			<div>
+				<span>Big Data Analytics</span>
+				<span>28</span>
+			</div>
+			<div>
+				<span>Deep Learning</span>
+				<span>31</span>
+			</div>
+			<div>
+				<span>Computer Engineering</span>
+				<span>25</span>
+			</div>
+			<div>
+				<span>Automation</span>
+				<span>20</span>
+			</div>
+			<div>
+				<span>Embedded Systems</span>
+				<span>51</span>
+			</div>
+			<div>
+				<span>Litreature</span>
+				<span>91</span>
+			</div>
+		</div>
+		
+	</div>
+	
+</section>
+
+<!-- --------------Footer Section--------------- -->
+<section class="footer">
+	<h4>Copyright</h4>
+	<p>© 2020 Austin University.All Rights reserved<br>COPYRIGHT|PRIVACY|SITE MAP|STUDENT FEEDBACK:COMPLAINTS,SUGGESTIONS AND COMPLIMENTS</p>
+	<div class="icons">
+		<i class="fa fa-facebook"></i>
+		<i class="fa fa-twitter"></i>
+		<i class="fa fa-instagram"></i>
+		<i class="fa fa-linkedin"></i>
+	</div>
+</section>
+<!-- -----------Javascript--------- -->
+<script >
+	var navLinks=document.getElementById("navLinks");
+
+	function showMenu(){
+		navLinks.style.right = "0";
+	}
+	function hideMenu(){
+		navLinks.style.right = "-200px";
+	}
+</script>
+</body>
+</html>

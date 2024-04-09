@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Teacher</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/studentenroll.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<section class="sub-header">
+	<nav>
+		  <a href="index"><img src="images/autlog2.png"></a>
+		  <div class="nav-links" id="navLinks">
+		  	<i class="fa fa-times" onclick="hideMenu()"></i>
+		  	<ul>
+		  		<li><a href="teacherdashboard" style="color: #fff;">BACK TO PORTAL</a></li>
+		  	</ul>
+		  </div>
+		  <i class="fa fa-bars" onclick="showMenu()"></i>
+	</nav>
+<h1>Add Teacher Details</h1>
+</section>
+	<div class="container">
+		<form action="teachers" method="post" th:action="@{teachers}" th:object="${teacher}">
+			<div class="mb-5">
+				<div class="row">
+            		<div class="form-group col-md-6 mb-3">
+                		<input type="text" id="tName" name="tName" th:field="*{tName}" class="form-control" placeholder="Teacher Name"/>
+            		</div>
+            		<div class="form-group col-md-6 mb-3">
+                		<input type="number" id="tAge" name="tAge" th:field="*{tAge}" class="form-control" placeholder="Teacher Age"/>
+            		</div>
+            		<div class="form-group col-md-6 mb-3">
+                		<input type="text" id="tFaculty" name="tFaculty" th:field="*{tFaculty}" class="form-control" placeholder="Teacher Faculty"/>
+            		</div>
+            
+            		<div class="form-group col-md-6 mb-3">
+                		<input type="text" id="tPlace" name="tPlace" th:field="*{tPlace}" class="form-control" placeholder="Teacher Location"/>
+            		</div>
+					 <div class="form-group col-md-6 mb-3">
+					    <input type="number" id="cId" name="cId" th:field="*{cId}" class="form-control" placeholder="Campus ID(Please Refer To The Below Table)"/>
+					</div>
+					<div class="col-lg-12 mt-5">
+						<button type="submit" class="btn btn-success" id="Submit">ADD TEACHER</button>
+					</div>
+				</div>
+			</div>
+		</form>
+		<h2>Available Campus Details</h2>
+	<div class="container">
+		<div class="row mt-5 table-responsive">
+			<div class="col-12">
+				<table class="table table-bordered" id="crudTable">
+					<thead>
+						<tr>
+							<th>Campus ID</th>
+							<th>Campus Name</th>
+							<th>Campus Faculty</th>
+							<th>Campus Place</th>
+							<th>Campus Capacity</th>
+							<th>Campus Lab Facilities</th>
+						</tr>
+					</thead>
+					<tbody>
+					    <tr th:each="campus : ${campuses}">
+					        <td th:text="${campus.cId}">Sample ID</td>
+					        <td th:text="${campus.cName}">Sample Name</td>
+					        <td th:text="${campus.cFaculty}">Sample Faculty</td>
+					        <td th:text="${campus.cPlace}">Sample Place</td>
+					        <td th:text="${campus.cCapacity}">Sample Capacity</td>
+					        <td th:text="${campus.cLabFacilities}">Sample Lab</td>
+					    </tr>
+					</tbody>
+				</table>
+			</div>	
+		</div>
+		</div>	
+	</div>
+	
+<script >
+		var navLinks=document.getElementById("navLinks");
+
+		function showMenu(){
+			navLinks.style.right = "0";
+		}
+		function hideMenu(){
+			navLinks.style.right = "-200px";
+		}
+	</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.querySelector('form');
+
+    form.onsubmit = function(event) {
+        // Get the values from the input fields
+        var tName = document.getElementById('tName').value.trim();
+        var tFaculty = document.getElementById('tFaculty').value.trim();
+        var tPlace = document.getElementById('tPlace').value.trim();
+        var tAge = document.getElementById('tAge').value.trim();
+        var cId = document.getElementById('cId').value.trim();
+
+        // Validate each field to ensure it is filled out
+        if (tName === ""){
+            alert("Teacher Name is required");
+            return false;
+        } else if (!/^[a-zA-Z\s]*$/.test(tName)) {
+            alert("Please enter a valid Teacher Name with no numeric characters.");
+            return false;
+        }
+        if (tAge === "") {
+            alert("Age is required");
+            return false;
+        } else if (isNaN(tAge) || parseInt(tAge) <= 0 || !Number.isInteger(parseInt(tAge)) || parseInt(tAge) > 60) {
+            alert("Please enter a valid age (positive integer up to 60 years old).");
+            return false;
+        }
+        if (tFaculty === ""){
+            alert("Teacher Faculty is required");
+            return false;
+        }
+        if (tPlace === ""){
+            alert("Teacher Location is required");
+            return false;
+        }
+        if (cId === ""){
+            alert("Campus ID is required");
+            return false;
+        } else if (isNaN(cId) || parseInt(cId) <= 0 || !Number.isInteger(parseInt(cId))) {
+            alert("Please enter a valid positive integer for Campus ID.");
+            return false;
+        }
+
+        // Return true if all validations pass
+        return true;
+    };
+});
+</script>
+
+<!-- Script tag for error message alert box when data is added -->
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check for flash messages
+        var message = /*[[${message}]]*/ null;
+        var errorMessage = /*[[${errorMessage}]]*/ null;
+
+        // Display the message if it exists
+        if (message !== null && message !== '') {
+            alert(message);
+        }
+
+        // Display the error message if it exists
+        if (errorMessage !== null && errorMessage !== '') {
+            alert(errorMessage);
+        }
+    });
+</script>
+</body>
+</html>

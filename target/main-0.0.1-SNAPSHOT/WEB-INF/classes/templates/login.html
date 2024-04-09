@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/loginstyle.css">
+</head>
+<body>
+<section class="sub-header">
+    <nav>
+        <a href="index"><img src="images/autlog2.png"></a>
+        <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="index" style="color: #fff;">HOME</a></li>
+                <li><a href="about" style="color: #fff;">ABOUT</a></li>
+                <li><a href="course" style="color: #fff;">COURSE</a></li>
+                <li><a href="blog" style="color: #fff;">BLOG</a></li>
+                <li><a href="contact" style="color: #fff;">CONTACT</a></li>
+            </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+</section>
+<div class="container">
+    <div class="wrapper">
+        <div class="title"><span>Login Form</span></div>
+        <form id="loginForm" action="login" method="post">
+            <div class="row">
+                <i class="fa fa-user"></i>
+                <input type="text" id="username" name="username" placeholder="Enter Username" required>
+            </div>
+            <div class="row">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <div class="pass"><a href="#">Forgot password?</a></div>
+            <div class="row button">
+                <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">Not a member? <a href="registration">Signup now</a></div>
+        </form>
+    </div>
+</div>
+<section class="footer">
+    <h4 style="color: #fff;">Copyright</h4>
+    <p style="color: #fff;">© 2020 Austin University.All Rights reserved<br>COPYRIGHT|PRIVACY|SITE MAP|STUDENT FEEDBACK:COMPLAINTS,SUGGESTIONS AND COMPLIMENTS</p>
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>
+    </div>
+</section>
+<script>
+    var navLinks=document.getElementById("navLinks");
+    function showMenu(){
+        navLinks.style.right = "0";
+    }
+    function hideMenu(){
+        navLinks.style.right = "-200px";
+    }
+
+    // Check for error message in URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasError = urlParams.has('error');
+
+    if (hasError) {
+        alert("Invalid credentials. Please try again.");
+    }
+</script>
+</body>
+</html>

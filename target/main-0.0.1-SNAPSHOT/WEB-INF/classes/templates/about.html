@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Austin University</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<section class="sub-header">
+	<nav class="navbar navbar-dark bg-dark">
+		  <a href="index"><img src="images/autlog2.png"></a>
+		  <div class="nav-links" id="navLinks">
+		  	<i class="fa fa-times" onclick="hideMenu()"></i>
+		  	<ul>
+		  		<li><a href="index" style="color: #fff;">HOME</a></li>
+		  		<li><a href="about" style="color: #fff;">ABOUT</a></li>
+		  		<li><a href="course" style="color: #fff;">COURSE</a></li>
+		  		<li><a href="blog" style="color: #fff;">BLOG</a></li>
+		  		<li><a href="contact" style="color: #fff;">CONTACT</a></li>
+		  		<li><a href="login" style="color: #fff;">PORTAL</a></li>
+		  	</ul>
+		  </div>
+		  <i class="fa fa-bars" onclick="showMenu()"></i>
+	</nav>
+<h1>About Us</h1>
+</section>
+<!-- -----------------About us section----------------- -->
+<section class="about-us">
+	<div class="row">
+		<div class="about-col">
+			<h1>We Are One Of The World's Best University</h1>
+			<p>We are a vibrant and forward-thinking university dedicated to making a positive impact on individuals and communities through education, research, and innovation. Established in 1989, AUT has expanded significantly in both enrollment and campus infrastructure, now operating across multiple locations. Renowned as world's leading university fostering entrepreneurship, we foster robust collaborations with academic, research, and industry stakeholders, both domestically and internationally.</p>
+			<a href="course" class="hero-btn blue-btn">EXPLORE NOW</a>
+
+		</div>
+		<div class="about-col">
+			<img src="images/bestuni.png">
+		</div>
+		
+	</div>
+	
+</section>
+
+<!-- --------------Footer--------------- -->
+<section class="footer">
+	<h4>Copyright</h4>
+	<p>© 2020 Austin University.All Rights reserved<br>COPYRIGHT|PRIVACY|SITE MAP|STUDENT FEEDBACK:COMPLAINTS,SUGGESTIONS AND COMPLIMENTS</p>
+	<div class="icons">
+		<i class="fa fa-facebook"></i>
+		<i class="fa fa-twitter"></i>
+		<i class="fa fa-instagram"></i>
+		<i class="fa fa-linkedin"></i>
+	</div>
+</section>
+<!-- -----------Javascript--------- -->
+<script >
+	var navLinks=document.getElementById("navLinks");
+
+	function showMenu(){
+		navLinks.style.right = "0";
+	}
+	function hideMenu(){
+		navLinks.style.right = "-200px";
+	}
+</script>
+</body>
+</html>

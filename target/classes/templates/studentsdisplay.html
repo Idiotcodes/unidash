@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/studentenroll.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<section class="sub-header">
+    <nav>
+        <a href="index.html"><img src="images/autlog2.png"></a>
+        <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="#" onclick="history.back();" style="color: #fff;">BACK TO PORTAL</a></li>
+            </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <h1>View Student Details</h1>
+</section>
+<div class="container">
+    <div class="row mt-5 table-responsive">
+        <div class="col-12">
+            <table class="table table-bordered" id="crudTable">
+                <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Place</th>
+                    <th>Age</th>
+                    <th>Course</th>
+                    <th>Teacher ID</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="student : ${students}">
+                    <td th:text="${student.sId}">Sample Student ID</td>
+                    <td th:text="${student.sName}">Sample Name</td>
+                    <td th:text="${student.sPlace}">Sample Place</td>
+                    <td th:text="${student.sAge}">Sample Age</td>
+                    <td th:text="${student.sCourse}">Sample Course</td>
+                    <td>
+                        <a href="#" class="teacher-details-link" th:data-id="${student.tId}" th:text="${student.tId}">Sample Campus ID</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for displaying student details -->
+<div class="modal fade" id="teacherModal" tabindex="-1" aria-labelledby="teacherModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="teacherModalLabel">Teacher Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="teacherDetails">
+                <p><strong>Teacher ID:</strong> <span id="teacherId"></span></p>
+                <p><strong>Name:</strong> <span id="teacherName"></span></p>
+                <p><strong>Age:</strong> <span id="teacherAge"></span></p>
+                <p><strong>Place:</strong> <span id="teacherPlace"></span></p>
+                </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script>
+    // Existing navigation JavaScript
+    var navLinks = document.getElementById("navLinks");
+    function showMenu() {
+        navLinks.style.right = "0";
+    }
+    function hideMenu() {
+        navLinks.style.right = "-200px";
+    }
+
+    // JavaScript for student details modal
+    $(document).ready(function() {
+        $(".teacher-details-link").click(function(event) {
+            event.preventDefault();
+            var teacherId = $(this).data("id");
+            $.ajax({
+                url: "teachers/" + teacherId,
+                success: function(teacherData) {
+                    $("#teacherId").text(teacherData.tId);
+                    $("#teacherName").text(teacherData.tName);
+                    $("#teacherAge").text(teacherData.tAge);
+                    $("#teacherPlace").text(teacherData.tPlace);
+                    $("#teacherModal").modal("show");
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
