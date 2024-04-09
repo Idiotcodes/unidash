@@ -8,8 +8,8 @@
 		<version>3.2.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.AUT</groupId>
-	<artifactId>test1</artifactId>
+	<groupId>com.unidash</groupId>
+	<artifactId>main</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>test1</name>
 	<description>AUT project for Spring Boot</description>
